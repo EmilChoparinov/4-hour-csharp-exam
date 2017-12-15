@@ -1,22 +1,10 @@
--- MySQL Workbench Forward Engineering
-
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
--- -----------------------------------------------------
--- Schema DojoActivities
--- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema DojoActivities
--- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `DojoActivities` DEFAULT CHARACTER SET utf8 ;
 USE `DojoActivities` ;
 
--- -----------------------------------------------------
--- Table `DojoActivities`.`Users`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `DojoActivities`.`Users` (
   `Id` INT NOT NULL AUTO_INCREMENT,
   `FirstName` VARCHAR(255) NULL,
@@ -27,10 +15,6 @@ CREATE TABLE IF NOT EXISTS `DojoActivities`.`Users` (
   PRIMARY KEY (`Id`))
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `DojoActivities`.`Activities`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `DojoActivities`.`Activities` (
   `Id` INT NOT NULL AUTO_INCREMENT,
   `ActivityName` VARCHAR(255) NULL,
@@ -47,10 +31,6 @@ CREATE TABLE IF NOT EXISTS `DojoActivities`.`Activities` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `DojoActivities`.`Participants`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `DojoActivities`.`Participants` (
   `ActivityId` INT NOT NULL,
   `UserId` INT NOT NULL,
@@ -68,7 +48,6 @@ CREATE TABLE IF NOT EXISTS `DojoActivities`.`Participants` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

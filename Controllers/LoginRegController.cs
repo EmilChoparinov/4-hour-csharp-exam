@@ -17,6 +17,12 @@ namespace LoginReg.Controllers
         {
             _userFactory = new UserFactory();
         }
+
+        /// <summary>
+        /// GET : // 
+        /// main route
+        /// </summary>
+        /// <returns>IActionResult</returns>
         [HttpGet, Route("")]
         public IActionResult Index()
         {
@@ -25,6 +31,12 @@ namespace LoginReg.Controllers
             return View("Index");
         }
 
+        /// <summary>
+        /// POST : // register
+        /// post request that will register a user to the database
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>IActionResult</returns>
         [HttpPost, Route("register")]
         public IActionResult Register(RegisterViewModel model)
         {
@@ -46,6 +58,12 @@ namespace LoginReg.Controllers
             return RedirectToAction("Index");
         }
 
+        /// <summary>
+        /// POST : // login
+        /// post request that will login a user using current data
+        /// </summary>
+        /// <param name="model">json binder to the incoming data to the method</param>
+        /// <returns>IActionResult</returns>
         [HttpPost, Route("login")]
         public IActionResult Login(LoginViewModel model)
         {
@@ -57,12 +75,23 @@ namespace LoginReg.Controllers
             HttpContext.Session.SetInt32("Id", _userFactory.GetUserByEmail(model.LogInfo.Email).Id);
             return RedirectToAction("Index");
         }
+
+        /// <summary>
+        /// Method that returns the current session id
+        /// </summary>
+        /// <param name="context">HttpContext. The container of the http headers and session key values</param>
+        /// <returns>int? id</returns>
         public int? GetId(HttpContext context)
         {
             int? Id = context.Session.GetInt32("Id");
             return Id;
         }
 
+        /// <summary>
+        /// GET : // logout
+        /// get request to the logout, clears session
+        /// </summary>
+        /// <returns>IActionResult</returns>
         [HttpGet, Route("logout")]
         public IActionResult Logout(){
             HttpContext.Session.Clear();

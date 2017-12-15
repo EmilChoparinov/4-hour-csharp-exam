@@ -10,13 +10,21 @@ namespace Project.DbConnection
         public string ConnectionString { get; set; }
     }
 
+    //Root class of the appsettings.json file
     public class DbConnector
     {
         public DBInfo DBInfo { get; set; }
     }
 
+    /// <summary>
+    /// Static class to reference the appsettings.json file
+    /// </summary>
     public static class DbConnect
     {
+        /// <summary>
+        /// Gets the connection string from appsettings.json
+        /// </summary>
+        /// <returns>connection string</returns>
         public static string GetDbConnectionString()
         {
             string filename = "appsettings.json";

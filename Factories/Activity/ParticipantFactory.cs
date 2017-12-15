@@ -52,6 +52,7 @@ namespace Activity.Factories
         /// <returns>Boolean if activity is possible to participate with</returns>
         public bool ParticipationPossible(int UserId, int ActivityId)
         {
+            //Just like.. dont look here it works and its garbage we all know that
             ActivityFactory activityFactory = new ActivityFactory();
             var activity = activityFactory.GetActivityById(ActivityId);
             DateTime endActivityDate = activity.ActivityDate;
