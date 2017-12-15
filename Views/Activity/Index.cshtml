@@ -1,0 +1,50 @@
+@{ ViewData["Title"] = "Dojo Activity Center"; }
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"] @ViewBag.User.FirstName!</h3>
+<a href="logout" class="btn btn-default pull-right">Log Off</a>
+<table class="table table-striped">
+    <thead>
+        <th>Activity</th>
+        <th>Date and Time</th>
+        <th>Duration</th>
+        <th>Event Coordinator</th>
+        <th>Number of Participants</th>
+        <th>Actions</th>
+    </thead>
+    @{
+        bool inList = false;
+    }
+    @foreach(var Activity in @ViewBag.Activities){
+        <tr>
+            <td>
+                <a href="activity/@Activity.Id">@Activity.ActivityName</a>
+                </td>
+            <td>@Activity.ActivityDate</td>
+            <td>@Activity.Duration</td>
+            <td>@Activity.Coordinator.FirstName @Activity.Coordinator.LastName</td>
+            <td>@Activity.Participants.Count</td>
+            @if(@Activity.Coordinator.Id == @ViewBag.User.Id){
+                <td>
+                    <a href="delete/@Activity.Id">Delete</a>
+                </td>
+            }else{
+                @foreach(var participant in @Activity.Participants){
+                    if(participant.User.Id == @ViewBag.User.Id){
+                        inList = true;
+                    }
+                }
+                @if(inList){
+                    <td>
+                        <a href="leave/@Activity.Id">Leave</a>
+                    </td>
+                }else{
+                    <td>
+                        <a href="join/@Activity.Id">Join</a>
+                    </td>
+                }
+                inList = false;
+            }
+        </tr>
+    }
+</table>
+<a href="/new-activity" class="btn btn-default pull-right">Add New Activity!</a>

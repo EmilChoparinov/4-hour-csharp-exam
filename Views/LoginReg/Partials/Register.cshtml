@@ -1,0 +1,25 @@
+@model LoginReg.Models.RegisterViewModel
+
+<form asp-controller="LoginReg" asp-action="Register" method="POST" class="form">
+    <label asp-for="FirstName"></label>
+    <input asp-for="FirstName" class="form-control">
+    <span asp-validation-for="FirstName" class="block red"></span>
+
+    <label asp-for="LastName"></label>
+    <input asp-for="LastName" class="form-control">
+    <span asp-validation-for="LastName" class="block red"></span>
+
+    <label asp-for="Email"></label>
+    <input asp-for="Email" class="form-control">
+    <span asp-validation-for="Email" class="block red"></span>
+
+    <label asp-for="Password"></label>
+    <input asp-for="Password" class="form-control">
+    <span asp-validation-for="Password" class="block red"></span>
+
+    <label asp-for="ConfirmPassword"></label>
+    <input asp-for="ConfirmPassword" class="form-control">
+    <span asp-validation-for="ConfirmPassword" class="block red"></span>
+
+    <button type="submit" class="btn btn-default">Register</button>
+</form>

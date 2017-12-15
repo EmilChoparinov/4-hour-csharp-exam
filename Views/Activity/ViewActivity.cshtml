@@ -1,0 +1,34 @@
+@{ ViewData["Title"] = "Dojo Activity Center"; }
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewBag.Activity.ActivityName</h3>
+<h5>Event Coordinator: @ViewBag.Activity.Coordinator.FirstName</h5>
+<a href="/home" class="btn btn-default pull-right">Home</a>
+@{
+    bool inList = false;
+}
+@if(@ViewBag.Activity.Coordinator.Id == @ViewBag.User.Id){
+        <a href="/delete/@ViewBag.Activity.Id" class="btn btn-default pull-right">Delete</a>
+}else{
+    @foreach(var participant in @ViewBag.Activity.Participants){
+        if(participant.User.Id == @ViewBag.User.Id){
+            inList = true;
+        }
+    }
+    @if(inList){
+            <a href="/leave/@ViewBag.Activity.Id" class="btn btn-default pull-right">Leave</a>
+    }else{
+            <a href="/join/@ViewBag.Activity.Id" class="btn btn-default pull-right">Join</a>
+    }
+    inList = false;
+}
+<p>Description</p>
+<p class="container">
+    @ViewBag.Activity.Description
+</p>
+
+<p>Participants:</p>
+<div class="container">
+    @foreach(var p in @ViewBag.Activity.Participants){
+        <p>@p.User.FirstName @p.User.LastName</p>
+    }
+</div>

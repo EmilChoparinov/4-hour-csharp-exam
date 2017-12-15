@@ -1,0 +1,15 @@
+@model LoginReg.Models.LoginViewModel
+
+<form asp-controller="LoginReg" asp-action="Login" method="POST" class="form">
+    <span asp-validation-for="LogInfo" class="block red"></span>
+
+    <label asp-for="LogInfo.Email"></label>
+    <input asp-for="LogInfo.Email" class="form-control">
+    <span asp-validation-for="LogInfo.Email" class="block red"></span>
+
+    <label asp-for="LogInfo.Password"></label>
+    <input asp-for="LogInfo.Password" class="form-control">
+    <span asp-validation-for="LogInfo.Password" class="block red"></span>
+
+    <button type="submit" class="btn btn-default">Login</button>
+</form>

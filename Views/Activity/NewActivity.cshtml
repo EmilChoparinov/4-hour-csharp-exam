@@ -1,0 +1,38 @@
+@{ ViewData["Title"] = "Dojo Activity Center"; }
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+<a href="/home" class="btn btn-default pull-right">Home</a>
+@model Activity.Models.ActivityViewModel
+
+<form asp-controller="Activity" asp-action="NewActivityDB" method="POST" class="form">
+    <span asp-validation-for="DateValues" class="block red"></span>
+
+    <label asp-for="ActivityName"></label>
+    <input asp-for="ActivityName" class="form-control">
+    <span asp-validation-for="ActivityName" class="block red"></span>
+
+    <label asp-for="Description"></label>
+    <input asp-for="Description" class="form-control">
+    <span asp-validation-for="Description" class="block red"></span>
+
+    <label asp-for="DateValues.Date"></label>
+    <input asp-for="DateValues.Date" class="form-control">
+    <span asp-validation-for="DateValues.Date" class="block red"></span>
+
+    <label asp-for="DateValues.Time"></label>
+    <input asp-for="DateValues.Time" class="form-control">
+    <span asp-validation-for="DateValues.Time" class="block red"></span>
+
+    <label asp-for="DurationInt"></label>
+    <input asp-for="DurationInt" class="form-control">
+    <span asp-validation-for="DurationInt" class="block red"></span>
+    
+    <select asp-for="TimeType" class="form-control">
+        <option selected hidden>Choose Time</option>
+        <option value="Days">Days</option>
+        <option value="Hours">Hours</option>
+        <option value="Minutes">Minutes</option>
+    </select>
+    <span asp-validation-for="TimeType" class="block red"></span>
+    <button type="submit" class="btn btn-default">Login</button>
+</form>
